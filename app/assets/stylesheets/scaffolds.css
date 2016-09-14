@@ -43,7 +43,7 @@ div {
   color: green;
 }
 
-#animal_common_name, #animal_latin_name, #animal_kingdom, #sighting_lat_long, #sighting_animal_id {
+#animal_common_name, #animal_latin_name, #animal_kingdom, #sighting_lat_long, #sighting_animal_id, #sighting_region, #start_date, #end_date, #region {
   color:black;
 }
 
@@ -76,4 +76,9 @@ div {
     font-size: 28px;
     list-style: square;
   }
+}
+
+.actions {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

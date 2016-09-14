@@ -19,14 +19,20 @@
     <%= f.label :time %><br>
     <%= f.time_select :time %>
   </div>
+
+  <div class="field">
+    <%= select(:sighting, :region, @regions_for_select)%>
+  </div>
+
+  <div class="field">
+    <%= select(:sighting, :animal_id, @animals_for_select)%>
+  </div>
+
   <div class="field">
     <%= f.label :lat_long %><br>
     <%= f.text_field :lat_long %>
   </div>
-  <div class="field">
-    <%= f.label :animal_id %><br>
-    <%= f.text_field :animal_id %>
-  </div>
+
   <div class="actions">
     <%= f.submit class:"btn btn-default" %>
   </div>

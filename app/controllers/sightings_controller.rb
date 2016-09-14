@@ -4,7 +4,26 @@ class SightingsController < ApplicationController
   # GET /sightings
   # GET /sightings.json
   def index
-    @sightings = Sighting.all
+    @regions_for_select = [""], ["True North"], ["Dirty South"], ["Wheast"], ["South East Cooridor"]
+
+
+    if (!(params[:start_date]).nil?) && (!(params[:end_date]).nil?)
+      if (!(params[:start_date]).empty?) && (!(params[:end_date]).empty?)
+        if(!params[:region].empty?)
+          @sightings = Sighting.where(date: params[:start_date]..params[:end_date], region: params[:region])
+          render('sightings/index.html.erb')
+        elsif
+          @sightings = Sighting.where(date: params[:start_date]..params[:end_date])
+          render('sightings/index.html.erb')
+        else
+          @sightings = Sighting.all
+        end
+      else
+        @sightings = Sighting.all
+      end
+    else
+      @sightings = Sighting.all
+    end
   end
 
   # GET /sightings/1
@@ -15,10 +34,31 @@ class SightingsController < ApplicationController
   # GET /sightings/new
   def new
     @sighting = Sighting.new
+    @animals_for_select = Animal.all.map do |animal|
+      [animal.common_name, animal.id]
+    end
+    if !params[:animal_id].nil?
+      animal = Animal.find(params[:animal_id])
+      @sighting.animal = animal
+    end
+
+    @regions_for_select = ["True North"], ["Dirty South"], ["Wheast"], ["South East Cooridor"]
+
   end
 
   # GET /sightings/1/edit
   def edit
+    @animals_for_select = Animal.all.map do |animal|
+      [animal.common_name, animal.id]
+    end
+    if !params[:animal_id].nil?
+      animal = Animal.find(params[:animal_id])
+      @sighting.animal = animal
+    end
+
+    @regions_for_select = ["True North"], ["Dirty South"], ["Wheast"], ["South East Cooridor"]
+
+
   end
 
   # POST /sightings
@@ -62,13 +102,13 @@ class SightingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sighting
-      @sighting = Sighting.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_sighting
+    @sighting = Sighting.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def sighting_params
-      params.require(:sighting).permit(:date, :time, :lat_long, :animal_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def sighting_params
+    params.require(:sighting).permit(:date, :time, :lat_long, :animal_id, :region)
+  end
 end

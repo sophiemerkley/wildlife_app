@@ -19,7 +19,7 @@
 <strong>Sightings:</strong>
 <ol>
   <% @animal.sightings.each do |sighting|  %>
-    <li><%=sighting.date %> | <%=sighting.time %> | <%=sighting.lat_long%></li>
+    <li><%=sighting.date %> | <%=sighting.time %> | <%=sighting.lat_long%> | <%=sighting.region%> </li>
   <% end %>
 </ol>
 
@@ -28,6 +28,8 @@
 
 
 <br>
-<%= link_to 'Add New Sighting', new_sighting_path(@sighting) %> |
+<a href="/sightings/new?animal_id=<%=@animal.id%>">
+  Add New Sighting
+</a> |
 <%= link_to 'Edit', edit_animal_path(@animal) %> |
 <%= link_to 'Home', animals_path %>

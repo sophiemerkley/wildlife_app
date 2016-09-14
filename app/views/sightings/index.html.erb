@@ -8,6 +8,7 @@
       <th>Date</th>
       <th>Time</th>
       <th>Lat long</th>
+      <th>Region</th>
       <th>Animal</th>
       <th colspan="3"></th>
     </tr>
@@ -19,6 +20,7 @@
         <td><%= sighting.date %></td>
         <td><%= sighting.time %></td>
         <td><%= sighting.lat_long %></td>
+        <td><%= sighting.region %></td>
         <td> <a href="/animals/<%=sighting.animal.id%>"> <%= sighting.animal.common_name %></td> </a>
         <td><%= link_to 'Show', sighting %></td>
         <td><%= link_to 'Edit', edit_sighting_path(sighting) %></td>
@@ -30,4 +32,26 @@
 
 <br>
 
-<%= link_to 'New Sighting', new_sighting_path %>
+<form action="/sightings" method="get">
+  <label for="start_date">Start date</label>
+  <input id="start_date" name="start_date" type="date" required>
+
+  <label for="end_date">End date</label>
+  <input id="end_date" name="end_date" type="date" required>
+
+  <label for="region">Region</label>
+  <strong id="region" name="region" class="field">
+    <%= select_tag("region", options_for_select(@regions_for_select)) %>
+  </strong>
+
+
+  <button class="btn btn-default">Run report</button>
+
+</form>
+
+
+
+<br>
+
+<%= link_to 'New Sighting', new_sighting_path %> |
+<%= link_to 'Home', animals_path %>
