@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Common name:</strong>
+  <%= @animal.common_name %>
+</p>
+
+<p>
+  <strong>Latin name:</strong>
+  <%= @animal.latin_name %>
+</p>
+
+<p>
+  <strong>Kingdom:</strong>
+  <%= @animal.kingdom %>
+</p>
+
+<hr>
+<strong>Sightings:</strong>
+<ol>
+  <% @animal.sightings.each do |sighting|  %>
+    <li><%=sighting.date %> | <%=sighting.time %> | <%=sighting.lat_long%></li>
+  <% end %>
+</ol>
+
+<hr>
+
+
+
+<br>
+<%= link_to 'Add New Sighting', new_sighting_path(@sighting) %> |
+<%= link_to 'Edit', edit_animal_path(@animal) %> |
+<%= link_to 'Home', animals_path %>
