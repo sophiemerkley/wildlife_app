@@ -10,7 +10,7 @@
       <th>Lat long</th>
       <th>Region</th>
       <th>Animal</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -18,7 +18,7 @@
     <% @sightings.each do |sighting| %>
       <tr>
         <td><%= sighting.date %></td>
-        <td><%= sighting.time %></td>
+        <td><%= sighting.time.strftime("%H:%M") %></td>
         <td><%= sighting.lat_long %></td>
         <td><%= sighting.region %></td>
         <td> <a href="/animals/<%=sighting.animal.id%>"> <%= sighting.animal.common_name %></td> </a>

@@ -7,20 +7,14 @@ class SightingsController < ApplicationController
     @regions_for_select = [""], ["True North"], ["Dirty South"], ["Wheast"], ["South East Cooridor"]
 
 
-    if (!(params[:start_date]).nil?) && (!(params[:end_date]).nil?)
-      if (!(params[:start_date]).empty?) && (!(params[:end_date]).empty?)
+    if (!(params[:start_date]).nil?) && (!(params[:end_date]).nil?) && (!(params[:start_date]).empty?) && (!(params[:end_date]).empty?)
         if(!params[:region].empty?)
           @sightings = Sighting.where(date: params[:start_date]..params[:end_date], region: params[:region])
-          render('sightings/index.html.erb')
         elsif
           @sightings = Sighting.where(date: params[:start_date]..params[:end_date])
-          render('sightings/index.html.erb')
         else
           @sightings = Sighting.all
         end
-      else
-        @sightings = Sighting.all
-      end
     else
       @sightings = Sighting.all
     end

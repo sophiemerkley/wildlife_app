@@ -2,7 +2,7 @@
 
 <h1>Listing Animals</h1>
 
-<table class="table">
+<table class="table" >
   <thead>
     <tr>
       <th>Common name</th>
@@ -12,7 +12,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="animal_list">
     <% @animals.each do |animal| %>
       <tr>
         <td><%= animal.common_name %></td>
@@ -31,3 +31,12 @@
 <%= link_to 'New Animal', new_animal_path %> |
 <%= link_to 'New Sighting', new_sighting_path %> |
 <%= link_to 'View Sightings', sightings_path %>
+
+<hr>
+<br>
+<p class="form">
+  <input class="input_text" type="text" name="animal[common_name]" placeholder="Common Name" id="commonName">
+  <input class="input_text" type="text" name="animal[latin_name]" placeholder="Latin Name" id="latinName">
+  <input class="input_text" type="text" name="animal[kingdom]" placeholder="Kingdom" id="kingdom">
+  <button id="create_new_animal" class="btn btn-default">Create New Animal</button>
+</p>
