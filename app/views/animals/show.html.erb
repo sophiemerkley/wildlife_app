@@ -30,7 +30,14 @@
   <input class="input_text" type="date" name="sighting[date]"  id="date">
   <input class="input_text" type="time" name="sighting[time]" id="time">
   <input class="input_text" type="text" name="sighting[lat_long]" placeholder="Lattitude, Longitude" id="latLong">
-  <input class="input_text" type="text" name="sighting[region]" placeholder="Region" id="region">
+
+  <!-- <input class="input_text" type="text" name="sighting[region]" placeholder="Region" id="region"> -->
+
+  <label for="region">Region</label>
+  <span id="region" class="field">
+    <%= select(:sighting, :region, @regions_for_select)%>
+  </span>
+
   <input class="input_text" type="hidden" name="sighting[animal_id]" id="animalId" value="<%=@animal.id%>">
   <button id="create_new_sighting" class="btn btn-default">Create New Sighting</button>
 </p>
@@ -39,8 +46,10 @@
 
 
 <br>
+<div class="text-shadow">
 <a href="/sightings/new?animal_id=<%=@animal.id%>">
   Add New Sighting
 </a> |
 <%= link_to 'Edit', edit_animal_path(@animal) %> |
 <%= link_to 'Home', animals_path %>
+</div>

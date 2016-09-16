@@ -3,45 +3,58 @@ body {
   background-image:url("https://hd.unsplash.com/uploads/1412862685615b0212e3d/5fcb0a55");
   background-size: cover;
   color: white;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Bowlby One SC', cursive;
+  line-height: 20px;
+  font-size: 20px;
+  letter-spacing: 1px;
+
+}
+
+/*font-family: 'Bowlby One SC', cursive;
+font-family: 'Oswald', sans-serif;*/
+
+th {
   font-size: 30px;
-  line-height: 30px;
+  letter-spacing: 1px;
+}
+
+strong {
+  font-size: 25px;
+}
+
+h1 {
+  font-size: 50px;
+  letter-spacing: 1px;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 30px;
-  line-height: 40px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  line-height: 30px;
 
 }
 
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 26px;
+  font-size: 16px;
 }
 
 a {
-  color: lightgreen;
-
-  &:visited {
-    color: tan;
-  }
-
-  &:hover {
-    color: #fff;
-  }
+  color: #8f9779;
+  letter-spacing: 1px;
+  font-size: 25px;
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+.text-shadow {
+  text-shadow: 2px 2px white;
 }
 
-#notice {
-  color: green;
+a:hover {
+  color: #4d5d53;
 }
+
 
 
 #animal_common_name, #animal_latin_name, #animal_kingdom, #sighting_lat_long, #sighting_animal_id, #sighting_region, #start_date, #end_date, #region {
@@ -56,10 +69,19 @@ div {
   padding-bottom: 30px;
 }
 
+.field {
+  padding-top: 10px;
+}
+
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
+}
+
+#notice {
+  color: #8f9779;
+  padding-top: 20px;
 }
 
 #error_explanation {
@@ -69,8 +91,9 @@ div {
   padding-bottom: 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
+}
 
-  h2 {
+h2 {
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
@@ -79,15 +102,32 @@ div {
     margin-bottom: 0px;
     background-color: #c00;
     color: #fff;
-  }
+}
 
-  ul li {
+ul li {
     font-size: 28px;
     list-style: square;
-  }
-}
+ }
 
 .actions {
   padding-top: 10px;
   padding-bottom: 10px;
+
+}
+
+.fc-today {
+    background: transparent !important;
+    border:`` none !important;
+    border-top: 1px solid #ddd !important;
+    color: #4d5d53 !important;
+    font-size: 30px !important;
+}
+
+.fc-center > h2 {
+  background-color: transparent;
+}
+
+.fc-unthemed {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

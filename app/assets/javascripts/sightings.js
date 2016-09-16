@@ -13,7 +13,7 @@ $("document").ready(function() {
           "date": $("#date").val(),
           "time": $("#time").val(),
           "lat_long": $("#latLong").val(),
-          "region": $("#region").val(),
+          "region": $("#sighting_region").val(),
           "animal_id": $("#animalId").val()
         }
       }
@@ -33,7 +33,7 @@ $("document").ready(function() {
           alert("Add new sighting failed: " + errorThrown);
         }
       });
-  });// end crate animal
+  });// end create animal
 
   function add_to_sighting_list(data) {
     $("#sighting_list").append(
@@ -43,9 +43,22 @@ $("document").ready(function() {
       '</td></li>');
   };
 
-  //
-  // <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
-  // <td><%= link_to 'Destroy', animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  $("#calendar").fullCalendar({
+     header: {
+       left: "prev,next today",
+       center: "title",
+       right: "month,agendaWeek,agendaDay"
+     },
+     defaultView: "month",
+     height: 900,
+     slotMinutes: 15,
+     events: "/sightings/get_events",
+     timeFormat: "LT",
+     dragOpacity: "0.5",
+     eventBackgroundColor: "#8f9779",
+     eventBorderColor: "#8f9779"
+
+  });
 
 }); // end document ready
 

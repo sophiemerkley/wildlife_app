@@ -40,9 +40,9 @@
   <input id="end_date" name="end_date" type="date" required>
 
   <label for="region">Region</label>
-  <strong id="region" name="region" class="field">
+  <span id="region" name="region" class="field">
     <%= select_tag("region", options_for_select(@regions_for_select)) %>
-  </strong>
+  </span>
 
 
   <button class="btn btn-default">Run report</button>
@@ -53,5 +53,8 @@
 
 <br>
 
+<div class="actions text-shadow">
 <%= link_to 'New Sighting', new_sighting_path %> |
-<%= link_to 'Home', animals_path %>
+<%= link_to 'Home', animals_path %> |
+<%= link_to 'Calander', calendar_sightings_path %>
+</div>

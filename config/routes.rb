@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  resources :sightings
+
+  resources :sightings do
+    # Show calendar page
+    get :calendar, on: :collection
+    # Get events from database and return them in JSON
+    get :get_events, on: :collection
+  end
+
   resources :animals
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'animals#index'
+  root 'animals#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

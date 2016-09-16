@@ -10,6 +10,7 @@ class AnimalsController < ApplicationController
   # GET /animals/1
   # GET /animals/1.json
   def show
+    @regions_for_select = [""], ["True North"], ["Dirty South"], ["Wheast"], ["South East Cooridor"]
   end
 
   # GET /animals/new
@@ -19,7 +20,7 @@ class AnimalsController < ApplicationController
 
   # GET /animals/1/edit
   def edit
-    
+
   end
 
   # POST /animals
@@ -55,9 +56,12 @@ class AnimalsController < ApplicationController
   # DELETE /animals/1
   # DELETE /animals/1.json
   def destroy
+    @animal.sightings.each do |sighting|
+      sighting.destroy
+    end
     @animal.destroy
     respond_to do |format|
-      format.html { redirect_to animals_url, notice: 'Animal was successfully destroyed.' }
+      format.html { redirect_to animals_url, notice: 'Animal was successfully destroyed' }
       format.json { head :no_content }
     end
   end

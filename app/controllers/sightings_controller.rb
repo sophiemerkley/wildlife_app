@@ -36,6 +36,8 @@ class SightingsController < ApplicationController
       @sighting.animal = animal
     end
 
+
+
     @regions_for_select = ["True North"], ["Dirty South"], ["Wheast"], ["South East Cooridor"]
 
   end
@@ -94,6 +96,23 @@ class SightingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def get_events
+    @sightings = Sighting.all
+    sightings = []
+    @sightings.each do |sighting|
+      sightings << {
+        id: sighting.id, title: sighting.animal.common_name, start: sighting.date, time: sighting.time, url: "/sightings/" + sighting.id.to_s
+      }
+    end
+    render :json => sightings.to_json
+  end
+
+
+  def calendar
+  end
+
+
 
   private
   # Use callbacks to share common setup or constraints between actions.
